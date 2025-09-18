@@ -1,15 +1,29 @@
-import { Fragment } from "react"
-
-const title = "Bonjour vous"
+import { Fragment, useState } from "react"
 
 function App() {
+
+  const [person, setPerson] = useState({
+    firstName: 'john',
+    lastName: 'Doe',
+    age: 18
+  })
+
+  const [count, setCount] = useState(0)
+
+  const incrementAge = () => {
+    setPerson({ ...person, age: person.age + 1 })
+  }
+
+  const incrementCount = () => {
+    setCount(count + 1)
+  }
+
   return <>
-
-    <h1 id="title" className="title"> {title}</h1>
-    <input type="text" />
-
-    <p>bla blablrferfergfregergrgergfre</p>
+    <p>Age de {person.firstName} : {person.age}</p>
+    <button onClick={incrementAge}>Gagner une année</button>
+    <button onClick={incrementCount}>Incrémenter {count}</button>
   </>
 }
+
 
 export default App
