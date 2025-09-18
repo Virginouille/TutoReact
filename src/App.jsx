@@ -1,29 +1,30 @@
-import { Fragment, useState } from "react"
-
 function App() {
 
-  const [person, setPerson] = useState({
-    firstName: 'john',
-    lastName: 'Doe',
-    age: 18
-  })
-
-  const [count, setCount] = useState(0)
-
-  const incrementAge = () => {
-    setPerson({ ...person, age: person.age + 1 })
+  function ProductCategoryRow({ category }) {
+    return (
+      <tr>
+        <th colSpan="2">
+          {category}
+        </th>
+      </tr>
+    );
   }
 
-  const incrementCount = () => {
-    setCount(count + 1)
+  function ProductRow({ product }) {
+    const name = product.stocked ? product.name :
+      <span style={{ color: 'red' }}>
+        {product.name}
+      </span>
   }
-
-  return <>
-    <p>Age de {person.firstName} : {person.age}</p>
-    <button onClick={incrementAge}>Gagner une année</button>
-    <button onClick={incrementCount}>Incrémenter {count}</button>
-  </>
 }
 
+const PRODUCTS = [
+  { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+  { category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit" },
+  { category: "Fruits", price: "$2", stocked: false, name: "Passionfruit" },
+  { category: "Vegetables", price: "$2", stocked: true, name: "Spinach" },
+  { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
+  { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
+]
 
 export default App
