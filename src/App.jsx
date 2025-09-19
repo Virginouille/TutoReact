@@ -1,22 +1,6 @@
-function App() {
+import { Checkbox } from "./components/forms/Checkbox"
+import { Input } from "./components/forms/Input"
 
-  function ProductCategoryRow({ category }) {
-    return (
-      <tr>
-        <th colSpan="2">
-          {category}
-        </th>
-      </tr>
-    );
-  }
-
-  function ProductRow({ product }) {
-    const name = product.stocked ? product.name :
-      <span style={{ color: 'red' }}>
-        {product.name}
-      </span>
-  }
-}
 
 const PRODUCTS = [
   { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
@@ -26,5 +10,21 @@ const PRODUCTS = [
   { category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin" },
   { category: "Vegetables", price: "$1", stocked: true, name: "Peas" }
 ]
+
+
+function App() {
+  return <div className="container my-3">
+    <SearchBar />
+  </div>
+}
+
+function SearchBar() {
+  return <div>
+    <div className="mb-3">
+      <Input value="" onChange={() => null} placeholder="Rechercher..." />
+      <Checkbox checked={false} onChange={() => null} label="N'afficher que les produits en stock" />
+    </div>
+  </div>
+}
 
 export default App
